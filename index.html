@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Garden | Fan Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            background-color: #050505;
+            color: #eee;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVIGATSIYA */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #4b0082;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: #8a2be2; }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { color: #fff; text-decoration: none; transition: 0.3s; }
+        .nav-links a:hover { color: #8a2be2; }
+
+        /* HERO SECTION (HEIGHT: 700PX, TEXT: LEFT) */
+        .hero {
+            height: 700px;
+            background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.2)), 
+                        url('https://i.pinimg.com/736x/bc/8f/9f/bc8f9f4b99a2b0b0bb5ab073ef0345b7.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center; /* Vertikal o'rtada */
+            justify-content: flex-start; /* Gorizontal chapda */
+            padding-left: 10%; /* Chapdan joy tashlash */
+        }
+
+        .hero-content {
+            max-width: 600px;
+            text-align: left; /* Matnni chapga tekislash */
+        }
+
+        .hero h1 { font-size: 4rem; color: #fff; margin-bottom: 10px; line-height: 1.1; }
+        .hero p { font-size: 1.5rem; color: #8a2be2; font-weight: bold; }
+
+        /* CARD GRID */
+        .container { padding: 80px 10%; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: #8a2be2; }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #222;
+            text-align: center;
+            padding-bottom: 15px;
+            transition: 0.3s;
+        }
+        .card:hover { border-color: #8a2be2; transform: translateY(-5px); }
+        .card img { width: 100%; height: 350px; object-fit: cover; }
+
+        /* ABOUT SECTION */
+        .about-anime {
+            background: #0a0a0a;
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-img { flex: 1; min-width: 300px; }
+        .about-img img { width: 100%; border-radius: 10px; border-bottom: 5px solid #8a2be2; }
+        .about-content { flex: 1.5; min-width: 300px; }
+        .about-content h2 { font-size: 2.5rem; color: #8a2be2; margin-bottom: 20px; }
+
+        /* FOOTER (KATTA + IKONKALAR BILAN) */
+        .footer {
+            background: #000;
+            padding: 80px 10% 40px;
+            border-top: 2px solid #8a2be2;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-box h3 { color: #8a2be2; margin-bottom: 20px; font-size: 1.5rem; }
+        .footer-box h4 { color: #fff; margin-bottom: 20px; }
+        .footer-box p { color: #888; font-size: 14px; }
+        
+        .footer-box ul { list-style: none; }
+        .footer-box ul li { margin-bottom: 10px; }
+        .footer-box ul li a { color: #888; text-decoration: none; transition: 0.3s; }
+        .footer-box ul li a:hover { color: #8a2be2; }
+
+        /* Ijtimoiy tarmoq ikonalari stili */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            background: #1a1a1a;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: 0.4s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: #8a2be2;
+            transform: scale(1.2);
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1a1a1a;
+            color: #444;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding-left: 5%; justify-content: center; text-align: center; }
+            .hero-content { text-align: center; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">SHADOW GARDEN</div>
+        <ul class="nav-links">
+            <li><a href="#">Bosh sahifa</a></li>
+            <li><a href="#garden">A'zolar</a></li>
+            <li><a href="#about">Hikoya</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>The Eminence <br> In Shadow</h1>
+            <p>I am Atomic.</p>
+        </div>
+    </header>
+
+    <section id="garden" class="container">
+        <h2 class="section-title">Asosiy Qahramonlar</h2>
+        <div class="card-grid">
+            <div class="card"><img src="https://i.pinimg.com/736x/48/82/c6/4882c6ca173700ae4057d3ffc5ab2376.jpg" alt="Sid"><h3>Shadow</h3></div>
+            <div class="card"><img src="https://i.pinimg.com/736x/c2/63/3f/c2633f5472d5801e4e1c83da80d78586.jpg" alt="Alpha"><h3>Alpha</h3></div>
+            <div class="card"><img src="https://i.pinimg.com/1200x/3e/97/4e/3e974e7dc45c80122d2bff8e9a5ac92e.jpg" alt="Beta"><h3>Beta</h3></div>
+            <div class="card"><img src="https://i.pinimg.com/736x/92/73/df/9273dfcc64fde95bceafa1c0029c4f21.jpg" alt="Gamma"><h3>Gamma</h3></div>
+            <div class="card"><img src="https://i.pinimg.com/736x/3c/59/e8/3c59e8090eb3e717ff45c2d4d1bcbb14.jpg" alt="Delta"><h3>Delta</h3></div>
+            <div class="card"><img src="https://i.pinimg.com/736x/b9/52/09/b952092bc3f2d697f2d8cf270d57e9e8.jpg" alt="Epsilon"><h3>Epsilon</h3></div>
+            <div class="card"><img src="https://i.pinimg.com/736x/ce/74/ab/ce74ab9af672910411200fc11b8b22dc.jpg" alt="Zeta"><h3>Zeta</h3></div>
+            <div class="card"><img src="https://i.pinimg.com/736x/c4/46/4f/c4464f4b6b737fde428f97b7b875aa0b.jpg" alt="Eta"><h3>Eta</h3></div>
+        </div>
+    </section>
+
+    <section id="about" class="about-anime">
+        <div class="about-img">
+            <img src="https://i.pinimg.com/736x/8c/7a/a8/8c7aa8be1634a9fb58aabda6f5999168.jpg" alt="About">
+        </div>
+        <div class="about-content">
+            <h2>Anime Haqida</h2>
+            <p>Ushbu anime Cid Kagenou ismli yigit haqida. U o'zining oldingi hayotida soyadagi buyuk kuch bo'lishni orzu qilgan. Yangi dunyoda qayta tug'ilgach, u o'z orzusini amalga oshiradi.</p>
+            <p>U "Shadow Garden" nomli maxfiy tashkilot tuzadi va o'zi to'qigan sirlar aslida haqiqat ekanligini bilmagan holda yovuzlikka qarshi kurashadi.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-box">
+                <h3>Shadow Garden</h3>
+                <p>Biz soyalarni ovlash uchun soyada yashaymiz. Eng yaxshi Isekai animelaridan biri haqidagi portal.</p>
+            </div>
+            <div class="footer-box">
+                <h4>Linklar</h4>
+                <ul>
+                    <li><a href="#">Epizodlar</a></li>
+                    <li><a href="#">Manga</a></li>
+                    <li><a href="#">Yangiliklar</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4>Bizni kuzating</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Shadow Garden Fan Page. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
